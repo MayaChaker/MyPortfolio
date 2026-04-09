@@ -3,45 +3,45 @@ import { FaCode, FaLayerGroup, FaUsers, FaLightbulb } from "react-icons/fa";
 export const cardData = [
   {
     icon: <FaCode />,
-    title: "Technical Excellence",
+    title: "Tech Stack",
     description:
-      "Expertise in modern web technologies with focus on React ecosystem and Node.js architecture.",
+      "React + Tailwind + Vite (frontend) and Node/Express + SQL/Sequelize (backend), focused on auth, roles, and performance.",
   },
   {
     icon: <FaLayerGroup />,
-    title: "Performance First",
+    title: "Performance-First",
     description:
-      "Creating optimized, scalable solutions that handle complex business requirements efficiently.",
+      "Build optimized, scalable applications that handle complex requirements efficiently.",
   },
   {
     icon: <FaUsers />,
-    title: "Client Focused",
+    title: "Client-Focused",
     description:
-      "Proven track record working with real clients, delivering production-ready applications.",
+      "Delivered production-ready projects for real clients with practical solutions.",
   },
   {
     icon: <FaLightbulb />,
     title: "Best Practices",
     description:
-      "Writing clean, maintainable code following industry standards and modern design patterns.",
+      "Write clean, maintainable code following modern design patterns and standards.",
   },
 ];
 
 export const ExperiencesData = [
   {
-    num: "15+",
-    title: "Technical Excellence",
+    num: "3+",
+    title: "Frontend Development",
   },
   {
-    num: "8+",
-    title: "Technical Excellence",
-  },
-  {
-    num: "5+",
-    title: "Technical Excellence",
+    num: "3+",
+    title: "Backend Development",
   },
   {
     num: "2+",
-    title: "Technical Excellence",
+    title: "Fullstack Projects",
+  },
+  {
+    num: "2+",
+    title: "Client Projects",
   },
 ];
