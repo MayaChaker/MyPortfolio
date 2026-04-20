@@ -1,45 +1,52 @@
-import { FaBuilding, FaUsers, FaChartLine } from "react-icons/fa";
+import { FaBolt, FaGem, FaDatabase } from "react-icons/fa";
 
 export const clientProjects = [
   {
-    title: "Property Listing Platform",
-    subtitle: "LOCAL REAL ESTATE AGENCY",
+    title: "Subscription & Billing Management App",
+    subtitle: "ELECTRICITY SUBSCRIPTIONS SYSTEM",
     description:
-      "Built a custom property management system with advanced search filters and image galleries",
-    tags: ["React", "Node.js", "MongoDB", "Cloudinary"],
-    results: [
-      "Reduced listing upload time by 60% with bulk upload feature",
-      "Implemented SEO optimization increasing organic traffic by 40%",
-      "Created responsive design supporting mobile",
+      "Built a full-stack web application to manage electricity subscriptions, monthly billing, and generator meter tracking for small-scale operations",
+    tags: [
+      "React (Vite)",
+      "Node.js",
+      "Express.js",
+      "MySQL (with JSON fallback)",
+      "JWT Authentication",
     ],
-    icon: <FaBuilding className="text-4xl text-blue-500" />,
+    results: [
+      "Automated monthly billing and debt calculation based on user subscriptions and payment history",
+      "Implemented month-based data handling for accurate tracking of dues and payments over time",
+      "Built flexible data storage with MySQL and JSON fallback to ensure reliability in different environments",
+    ],
+    icon: <FaBolt className="text-4xl text-blue-500" />,
     color: "blue",
   },
   {
-    title: "Client Dashboard & Analytics",
-    subtitle: "DIGITAL MARKETING AGENCY",
+    title: "Online Store & Product Showcase",
+    subtitle: "JEWELRY E-COMMERCE WEBSITE",
     description:
-      "Developed a comprehensive dashboard for tracking marketing campaigns and client metrics",
-    tags: ["React", "Express.js", "PostgreSQL", "Chart.js"],
+      "Developed a modern e-commerce web application for showcasing and selling jewelry products with a focus on user experience and product presentation",
+    tags: ["React", "Node.js", "Express.js", "MySQL"],
     results: [
-      "Automated report generation saving 10+ hours weekly",
-      "Real-time analytics integration with multiple marketing platforms",
+      "Enhanced user experience with dynamic product browsing, filtering, and search functionality",
+      "Integrated secure payment processing for smooth and reliable transactions",
+      "Structured backend APIs to efficiently manage products, orders, and customer data",
     ],
-    icon: <FaUsers className="text-4xl text-purple-500" />,
+    icon: <FaGem className="text-4xl text-purple-500" />,
     color: "purple",
   },
   {
-    title: "Inventory & Sales System",
-    subtitle: "SMALL E-COMMERCE STARTUP",
+    title: "Inventory & Product Management API",
+    subtitle: "BACKEND API SYSTEM",
     description:
-      "Created an integrated system for managing inventory, orders, and customer relationships",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      "Engineered a scalable backend service to handle product operations, authentication, and dynamic data querying",
+    tags: ["Node.js", "Express.js", "Sequelize + Raw SQL", "MariaDB", "JWT"],
     results: [
-      "Streamlined order processing reducing fulfillment time by 35%",
-      "Automated inventory alerts preventing stockouts",
-      "Integrated payment gateway with recurring subscription support",
+      "Reduced query complexity by implementing dynamic filtering, sorting, and pagination",
+      "Secured API access using JWT-based authentication and protected routes",
+      "Improved performance by combining Sequelize with optimized raw SQL queries",
     ],
-    icon: <FaChartLine className="text-4xl text-green-500" />,
+    icon: <FaDatabase className="text-4xl text-green-500" />,
     color: "green",
   },
 ];

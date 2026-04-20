@@ -1,18 +1,19 @@
 export const projects = [
   {
-    title: "Hospital Management System",
+    title: "Hospital Management System (SmartCare)",
     description:
-      "Comprehensive hospital management platform with role-based access control and real-time patient tracking",
-    tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT"],
+      "Built a full-stack hospital management system to manage patient data, appointments, and user roles.",
+    tags: ["React", "Node.js", "Express.js", "MySQL (Sequelize)", "JWT Authentication"],
     features: [
-      "Role-based access control",
-      "Real-time patient tracking",
-      "Appointment scheduling",
-      "Inventory management",
+      "Role-based access control for multiple users",
+      "Appointment scheduling and status management",
+      "RESTful API with structured backend architecture",
+      "Secure authentication and authorization",
+      "Responsive frontend dashboards",
     ],
     role: "Full-stack Developer",
-    liveLink: "#",
-    repoLink: "#",
+    liveLink: "https://smart-care-hms.vercel.app/",
+    repoLink: "https://github.com/MayaChaker/SmartCare-HMS.git",
     color: "blue",
   },
   {
