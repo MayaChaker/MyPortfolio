@@ -47,7 +47,7 @@ function HeroSection() {
             Computer Science graduate specializing
             <span className="text-blue-500 font-medium"> React</span>,
             <span className="text-blue-500 font-medium"> Node.js</span> and
-            <span className="text-blue-500 font-medium"> PostgreSQL</span>.
+            <span className="text-blue-500 font-medium"> MySQL</span>.
           </span>
           Building scalable, user-focused web applications with clean
           architecture.
