@@ -35,7 +35,7 @@ function ContactSection() {
           <FaPaperPlane /> Send Message
         </a>
         <a
-          href="/Maya_Chaker_CV PDF.pdf"
+          href="/MayaChaker_CV PDF.pdf"
           download
           className="px-8 py-4 bg-transparent border-2 border-gray-600 text-white rounded-full font-bold text-lg hover:bg-gray-800 hover:border-gray-500 transition-all flex items-center gap-3 [.light_&]:text-gray-900 [.light_&]:border-gray-300 [.light_&]:hover:bg-gray-200"
         >
