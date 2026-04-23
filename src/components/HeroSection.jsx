@@ -81,11 +81,13 @@ function HeroSection() {
               <LuLinkedin />
             </div>
           </a>
-          <div className="bg-gray-800/50 [.light_&]:bg-gray-200 [.light_&]:text-gray-500 p-3 rounded-full hover:bg-blue-600/20 hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-transparent hover:border-blue-500/30">
-            <CiMail />
-          </div>
+          <a href="mailto:mayachaker06@gmail.com">
+            <div className="bg-gray-800/50 [.light_&]:bg-gray-200 [.light_&]:text-gray-500 p-3 rounded-full hover:bg-blue-600/20 hover:text-blue-400 transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-transparent hover:border-blue-500/30">
+              <CiMail />
+            </div>
+          </a>
         </div>
-        <a href="mayachaker06@gmail.com">
+        <a href="mailto:mayachaker06@gmail.com">
           <div className="text-4xl text-gray-500 mt-10 animate-bounce">
             <FaArrowDownLong />
           </div>

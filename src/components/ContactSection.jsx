@@ -15,9 +15,9 @@ function ContactSection() {
         </h2>
         <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-6"></div>
         <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed [.light_&]:text-gray-600">
-          I'm currently open to new opportunities and collaborations. Whether
-          you have a project in mind or just want to connect, I'd love to hear
-          from you.
+          I am currently open to opportunities as a Junior Full-Stack. Feel free
+          to reach out if you are looking for a motivated developer ready to
+          learn and contribute.
         </p>
       </div>
 
@@ -29,7 +29,7 @@ function ContactSection() {
 
       <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
         <a
-          href="mailto:your.email@example.com"
+          href="mailto:mayachaker06@gmail.com"
           className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all flex items-center gap-3 transform hover:-translate-y-1"
         >
           <FaPaperPlane /> Send Message

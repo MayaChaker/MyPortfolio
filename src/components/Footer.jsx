@@ -19,12 +19,12 @@ function Footer() {
 
           {/* Social Icons */}
           <div className="flex gap-4">
-            <SocialLink href="https://github.com" icon={<FaGithub />} />
-            <SocialLink href="https://linkedin.com" icon={<FaLinkedin />} />
+            <SocialLink href="https://github.com/MayaChaker" icon={<FaGithub />} />
             <SocialLink
-              href="mailto:your.email@example.com"
-              icon={<FaEnvelope />}
+              href="https://www.linkedin.com/in/maya-chaker-9025a7387"
+              icon={<FaLinkedin />}
             />
+            <SocialLink href="mailto:mayachaker06@gmail.com" icon={<FaEnvelope />} />
           </div>
         </div>
 

@@ -5,7 +5,7 @@ export const contactMethods = [
     icon: <FaEnvelope className="text-3xl text-white" />,
     title: "Email",
     value: "mayachaker06@gmail.com",
-    link: "mayachaker06@gmail.com",
+    link: "mailto:mayachaker06@gmail.com",
     color: "bg-gray-700",
   },
   {
