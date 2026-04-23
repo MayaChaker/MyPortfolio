@@ -10,7 +10,7 @@ function ProjectsSection() {
           My Work
         </span>
         <h2 className="text-5xl font-extrabold text-white mt-4 mb-4 [.light_&]:text-gray-900">
-          featured Projects
+          Featured Projects
         </h2>
         <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
       </div>

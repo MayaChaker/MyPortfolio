@@ -63,6 +63,16 @@ function ProjectCard({ project }) {
           </li>
         ))}
       </ul>
+      {project.whatILearned ? (
+        <div className="mt-8">
+          <h4 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3 [.light_&]:text-gray-600">
+            What I Learned
+          </h4>
+          <p className="text-gray-400 text-base leading-relaxed [.light_&]:text-gray-600">
+            {project.whatILearned}
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }

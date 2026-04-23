@@ -21,17 +21,20 @@ function AboutMe() {
           <div className="relative bg-gray-900 ring-1 ring-gray-900/5 rounded-2xl leading-none flex items-top justify-start space-x-6 [.light_&]:bg-gray-100 [.light_&]:ring-gray-200">
             <div className="p-8 md:p-10 text-gray-300 text-lg leading-relaxed [.light_&]:text-gray-700">
               <p className="mb-6 text-2xl">
-                I'm a passionate fullstack developer with a focus on turning
-                complex problems into clean, efficient solutions. I enjoy
-                building web applications that are not only fully functional but
-                also provide an exceptional user experience.
+                I am a Computer Science graduate with practical experience in
+                full-stack web development. I work on both frontend and backend,
+                building responsive user interfaces with React and developing
+                RESTful APIs and backend logic using Node.js and Express.
               </p>
               <p className="mb-6 text-2xl">
-                I have hands-on experience in both frontend and backend
-                development, specializing in modern frameworks like React and
-                Node.js. I prioritize writing clean, maintainable, and
-                well-tested code, and I follow best practices and industry
-                standards in every project.
+                I developed a complete hospital management system that includes
+                authentication, role-based access, appointment scheduling, and
+                patient records, simulating real-world workflows.
+              </p>
+              <p className="mb-6 text-2xl">
+                I am currently looking for an opportunity as a junior developer
+                where I can apply my skills, improve further, and contribute to
+                real projects.
               </p>
             </div>
           </div>

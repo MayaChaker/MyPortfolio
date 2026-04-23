@@ -2,15 +2,17 @@ export const projects = [
   {
     title: "Hospital Management System (SmartCare)",
     description:
-      "Built a full-stack hospital management system to manage patient data, appointments, and user roles.",
+      "A full-stack web application designed to manage hospital workflows and simulate real-world operations.",
     tags: ["React", "Node.js", "Express.js", "MySQL (Sequelize)", "JWT Authentication"],
     features: [
-      "Role-based access control for multiple users",
-      "Appointment scheduling and status management",
-      "RESTful API with structured backend architecture",
-      "Secure authentication and authorization",
-      "Responsive frontend dashboards",
+      "Role-based access system (Admin, Doctor, Receptionist, Patient)",
+      "Secure authentication using JWT",
+      "Appointment scheduling and management",
+      "Patient records and medical data handling",
+      "Dashboard interfaces for different user roles",
     ],
+    whatILearned:
+      "Through this project, I gained strong experience in backend development, API design, authentication systems, and handling complex application logic with multiple user roles.",
     role: "Full-stack Developer",
     liveLink: "https://smart-care-hms.vercel.app/",
     repoLink: "https://github.com/MayaChaker/SmartCare-HMS.git",

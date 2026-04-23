@@ -44,13 +44,15 @@ function HeroSection() {
 
         <p className="text-gray-400 text-lg leading-relaxed max-w-4xl mx-auto mb-10 [.light_&]:text-gray-700">
           <span className="block">
-            Computer Science graduate specializing
+            I build complete web applications from frontend interfaces to backend systems using
             <span className="text-blue-500 font-medium"> React</span>,
             <span className="text-blue-500 font-medium"> Node.js</span> and
             <span className="text-blue-500 font-medium"> MySQL</span>.
           </span>
-          Building scalable, user-focused web applications with clean
-          architecture.
+          Computer Science graduate with hands-on experience developing full-stack
+          applications, including a hospital management system with
+          authentication, role-based access, and real-world workflows. I enjoy
+          building both user-friendly interfaces and structured backend systems.
         </p>
         <div className="flex gap-9 items-center justify-center mt-5">
           <span>
