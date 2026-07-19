@@ -1,68 +1,69 @@
-import React, { useState } from "react";
-import Mode from "@ui/Mode";
+import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+const links = ["about", "skills", "projects", "work", "contact"];
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const progressRef = useRef(null);
+  const menuButtonRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActive(entry.target.id)),
+      { rootMargin: "-35% 0px -55%", threshold: 0 },
+    );
+    links.forEach((id) => { const section = document.getElementById(id); if (section) observer.observe(section); });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let frame;
+    const updateProgress = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        const available = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = available > 0 ? window.scrollY / available : 0;
+        progressRef.current?.style.setProperty("transform", `scaleX(${progress})`);
+        frame = undefined;
+      });
+    };
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full bg-gray-900/95 [.light_&]:bg-white/95 backdrop-blur-md shadow-lg z-50">
-      <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
-        <div className="text-2xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent cursor-pointer hover:opacity-80 transition-opacity">
-          {"<MAYA />"}
+    <header className="site-header">
+      <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
+      <nav className="nav shell" aria-label="Primary navigation">
+        <a className="wordmark" href="#top" aria-label="Maya Chaker, home">{"<Maya />"}</a>
+        <button ref={menuButtonRef} className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="nav-links" aria-label={open ? "Close menu" : "Open menu"}>
+          {open ? <FiX /> : <FiMenu />}
+        </button>
+        <div className={`nav-links ${open ? "is-open" : ""}`} id="nav-links">
+          {links.map((link) => (
+            <a key={link} className={active === link ? "active" : ""} href={`#${link}`} aria-current={active === link ? "location" : undefined} onClick={() => setOpen(false)}>{link === "work" ? "Applied work" : link}</a>
+          ))}
+          <a className="nav-cta" data-magnetic href="mailto:mayachaker06@gmail.com">Let’s talk</a>
         </div>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 items-center font-medium text-gray-300 [.light_&]:text-gray-700">
-          {["Home", "About", "Skills", "Projects", "Clients", "Contact"].map(
-            (item) => (
-              <li key={item} className="relative group cursor-pointer">
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="hover:text-blue-500 transition-colors duration-300 block py-2"
-                >
-                  {item}
-                </a>
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
-              </li>
-            ),
-          )}
-          <li>
-            <Mode />
-          </li>
-        </ul>
-
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center gap-4">
-          <Mode />
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-300 [.light_&]:text-gray-700 hover:text-blue-500 transition-colors text-2xl focus:outline-none"
-          >
-            {isOpen ? <FiX /> : <FiMenu />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-gray-900/95 [.light_&]:bg-white/95 backdrop-blur-md shadow-lg md:hidden flex flex-col items-center py-8 gap-6 transition-all duration-300 border-b border-gray-800 [.light_&]:border-gray-200">
-          {["Home", "About", "Skills", "Projects", "Clients", "Contact"].map(
-            (item) => (
-              <a
-                href={`#${item.toLowerCase()}`}
-                key={item}
-                className="text-gray-300 [.light_&]:text-gray-700 text-lg font-medium hover:text-blue-500 transition-colors cursor-pointer"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </a>
-            ),
-          )}
-        </div>
-      )}
-    </nav>
+      </nav>
+    </header>
   );
 }
-
-export default Navbar;

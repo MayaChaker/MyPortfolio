@@ -1,37 +1,29 @@
-import React from "react";
+import Navbar from "@components/Navbar";
 import HeroSection from "@components/HeroSection";
 import AboutMe from "@components/AboutMe";
 import SkillsSection from "@components/SkillsSection";
 import ProjectsSection from "@components/ProjectsSection";
-import RealClientWork from "@components/RealClientWork";
+import AppliedWorkSection from "@components/AppliedWorkSection";
 import ContactSection from "@components/ContactSection";
 import Footer from "@components/Footer";
+import InteractionLayer from "@components/InteractionLayer";
+import { LazyMotion, domAnimation } from "framer-motion";
 
-function HomePage() {
+export default function HomePage() {
   return (
-    <div>
-      <section id="home">
+    <LazyMotion features={domAnimation} strict>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <InteractionLayer />
+      <Navbar />
+      <main id="main-content">
         <HeroSection />
-      </section>
-      <section id="about" className="scroll-mt-28">
         <AboutMe />
-      </section>
-      <section id="skills" className="scroll-mt-28">
         <SkillsSection />
-      </section>
-      <section id="projects" className="scroll-mt-28">
         <ProjectsSection />
-      </section>
-      <section id="clients" className="scroll-mt-28">
-        <RealClientWork />
-      </section>
-      <section id="contact" className="scroll-mt-28">
+        <AppliedWorkSection />
         <ContactSection />
-      </section>
-
+      </main>
       <Footer />
-    </div>
+    </LazyMotion>
   );
 }
-
-export default HomePage;
