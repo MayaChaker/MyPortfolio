@@ -1,29 +1,35 @@
-import Navbar from "@components/Navbar";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import HeroSection from "@components/HeroSection";
-import AboutMe from "@components/AboutMe";
-import SkillsSection from "@components/SkillsSection";
 import ProjectsSection from "@components/ProjectsSection";
-import AppliedWorkSection from "@components/AppliedWorkSection";
+import ExperienceSection from "@components/ExperienceSection";
+import SkillsSection from "@components/SkillsSection";
+import TestimonialsSection from "@components/TestimonialsSection";
 import ContactSection from "@components/ContactSection";
-import Footer from "@components/Footer";
-import InteractionLayer from "@components/InteractionLayer";
-import { LazyMotion, domAnimation } from "framer-motion";
+import { getRole, profile } from "@Data/profile";
 
 export default function HomePage() {
+  const { search, hash } = useLocation();
+  const role = getRole(search);
+
+  useEffect(() => {
+    document.title = `${profile.name} | Full-stack developer`;
+  }, []);
+
+  // Coming back from a case study with /#work: scroll once the page has rendered.
+  useEffect(() => {
+    if (!hash) return;
+    document.getElementById(hash.slice(1))?.scrollIntoView();
+  }, [hash]);
+
   return (
-    <LazyMotion features={domAnimation} strict>
-      <a className="skip-link" href="#main-content">Skip to content</a>
-      <InteractionLayer />
-      <Navbar />
-      <main id="main-content">
-        <HeroSection />
-        <AboutMe />
-        <SkillsSection />
-        <ProjectsSection />
-        <AppliedWorkSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </LazyMotion>
+    <>
+      <HeroSection role={role} />
+      <ProjectsSection role={role} />
+      <ExperienceSection />
+      <SkillsSection role={role} />
+      <TestimonialsSection />
+      <ContactSection />
+    </>
   );
 }

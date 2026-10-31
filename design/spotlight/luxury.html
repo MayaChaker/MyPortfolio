@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luxury Drive Studio · Maya Chaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<div class="spot" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="inner">
+    <header class="top">
+      <a class="mark" href="option-1.html" aria-label="Maya Chaker, home">MC</a>
+      <nav aria-label="Primary"><a href="option-1.html#work">Work</a><a href="option-1.html#experience">Experience</a><a href="option-1.html#contact">Contact</a><a href="https://maya-chaker-portfolio.vercel.app/MayaChaker_CV%20PDF.pdf">Résumé</a></nav>
+    </header>
+
+    <section class="head">
+      <div>
+        <a class="back label" href="option-1.html#work">← All projects</a>
+        <p class="label kind">Case study · Car showcase</p>
+        <h1>Luxury Drive Studio</h1>
+        <p class="summary">A car catalogue with collection pages, a page for every model, an interactive 3D viewer, a monthly cost calculator and a concierge request form.</p>
+        <div class="btns"><a class="btn solid" href="https://bmw-mayas-projects-d5aa530e.vercel.app/">Live site ↗</a><a class="btn" href="https://github.com/MayaChaker/bmw-luxury-drive-studio">Source code ↗</a></div>
+      </div>
+      <div class="cover"><img src="img/luxury.webp" alt="Luxury Drive Studio homepage"></div>
+    </section>
+
+    <dl class="stats" style="--cols: 2">
+      <div><dt class="label">Routes</dt><dd>9</dd></div>
+      <div><dt class="label">Model viewer</dt><dd>3D</dd></div>
+    </dl>
+
+    <section class="block">
+      <h2>Overview</h2>
+      <div class="content">
+        <p>A learning project: a premium car showcase built with React and Vite. It covers the catalogue, collection pages, model details, an interactive 3D studio, a budget calculator and a private concierge form.</p>
+        <p class="note">BMW and related marks belong to Bayerische Motoren Werke AG. The project isn't affiliated with them.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Features</h2>
+      <div class="content">
+        <ul class="list">
+          <li>Catalogue split into new models, luxury and best-selling collections</li>
+          <li>A series comparison table that becomes cards on a phone</li>
+          <li>3D studio with full camera rotation and exterior colour controls</li>
+          <li>Budget calculator: down payment, term and APR to an estimated monthly cost</li>
+          <li>Keyboard-friendly controls and labelled form fields</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>How it's <em>built</em></h2>
+      <div class="content">
+        <p>React 19 with React Router 7 and Vite. Every page reads from one car data file. Styles are CSS Modules plus shared global CSS, and a script in the repo converts the images to WebP.</p>
+        <div class="tags"><span>React</span><span>React Router</span><span>Vite</span><span>CSS Modules</span><span>Sketchfab Viewer API</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Decisions</h2>
+      <dl class="content decisions">
+        <div><dt>The model follows you to the form</dt><dd>The selected car is passed into the concierge form, so the customer never retypes what they were looking at.</dd></div>
+      </dl>
+    </section>
+
+    <section class="block">
+      <h2>Where to look in the <em>code</em></h2>
+      <ul class="content files">
+        <li><a href="https://github.com/MayaChaker/bmw-luxury-drive-studio/blob/HEAD/src/data/bmwCars.js"><span>Car data</span><code>src/data/bmwCars.js</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/bmw-luxury-drive-studio/blob/HEAD/src/pages/ExperienceStudio.jsx"><span>3D studio and calculator</span><code>src/pages/ExperienceStudio.jsx</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/bmw-luxury-drive-studio/blob/HEAD/src/hooks/useContactForm.js"><span>Contact form logic</span><code>src/hooks/useContactForm.js</code><i aria-hidden="true">↗</i></a></li>
+      </ul>
+    </section>
+    <a class="next" href="veloura.html"><span class="label">Next project</span><strong>Veloura <em>→</em></strong></a>
+  </div>
+</div>
+<script src="spot.js"></script>
+</body>
+</html>

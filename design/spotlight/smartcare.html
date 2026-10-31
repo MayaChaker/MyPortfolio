@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SmartCare · Maya Chaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<div class="spot" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="inner">
+    <header class="top">
+      <a class="mark" href="option-1.html" aria-label="Maya Chaker, home">MC</a>
+      <nav aria-label="Primary"><a href="option-1.html#work">Work</a><a href="option-1.html#experience">Experience</a><a href="option-1.html#contact">Contact</a><a href="https://maya-chaker-portfolio.vercel.app/MayaChaker_CV%20PDF.pdf">Résumé</a></nav>
+    </header>
+
+    <section class="head">
+      <div>
+        <a class="back label" href="option-1.html#work">← All projects</a>
+        <p class="label kind">Case study · Hospital management</p>
+        <h1>SmartCare</h1>
+        <p class="summary">A public website and four portals: patients, doctors, front desk and administration. Each role sees only its own tools, and the server enforces the same rules.</p>
+        <div class="btns"><a class="btn solid" href="https://smart-care-hms.vercel.app/">Live site ↗</a><a class="btn" href="https://github.com/MayaChaker/SmartCare-HMS">Source code ↗</a></div>
+      </div>
+      <div class="cover"><img src="img/smartcare.webp" alt="SmartCare doctor dashboard"></div>
+    </section>
+
+    <dl class="stats">
+      <div><dt class="label">Role portals</dt><dd>4</dd></div>
+      <div><dt class="label">Backend tests</dt><dd>102</dd></div>
+      <div><dt class="label">Database models</dt><dd>6</dd></div>
+      <div><dt class="label">Demo data reset</dt><dd>Nightly</dd></div>
+    </dl>
+
+    <section class="block">
+      <h2>Overview</h2>
+      <div class="content">
+        <p>SmartCare follows how a real visit works: a patient books a time inside the doctor's working hours, the front desk checks them in, the doctor starts and completes the visit and writes the note, and the administration follows the numbers.</p>
+        <p>I built it from an empty folder: planned the architecture, designed the database, built the React app and the Express API, and deployed it on Vercel, Render and TiDB Cloud.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Try <em>it</em></h2>
+      <div class="content">
+        <p>Open the login page and pick a role, or sign in with one of these. The API runs on a free tier, so the first request can take up to a minute.</p>
+        <table class="demo">
+          <thead><tr><th class="label" scope="col">Role</th><th class="label" scope="col">Username</th></tr></thead>
+          <tbody>
+            <tr><td>Patient</td><td><code>demo.patient</code></td></tr>
+            <tr><td>Doctor</td><td><code>dr.karim.mansour</code></td></tr>
+            <tr><td>Front desk</td><td><code>demo.reception</code></td></tr>
+            <tr><td>Administration</td><td><code>demo.admin</code></td></tr>
+          </tbody>
+        </table>
+        <p>Password for every account: <code>SmartCareDemo</code></p>
+        <div class="btns"><a class="btn" href="https://smart-care-hms.vercel.app/login">Open the login page ↗</a></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Features</h2>
+      <div class="content grid2">
+        <div><h3 class="label">Patients</h3><ul class="list"><li>Book by department, with each doctor's next free times and fee</li><li>Move or cancel visits, read notes and prescriptions</li><li>Activate their file with a one-time code</li></ul></div>
+        <div><h3 class="label">Doctors</h3><ul class="list"><li>Today's list, the waiting room and the next patient</li><li>Visit notes: diagnosis, treatment, prescriptions, follow-up</li><li>Weekly schedule and a chart for each patient</li></ul></div>
+        <div><h3 class="label">Front desk</h3><ul class="list"><li>A board with every working doctor as a column</li><li>Check-in, no-shows, and booking for patients</li><li>Open a new file with a name, mobile and date of birth</li></ul></div>
+        <div><h3 class="label">Administration</h3><ul class="list"><li>Visits, no-show rate and average wait for 7 or 30 days</li><li>An activity log of who did what and when</li><li>Staff accounts with a temporary first password</li></ul></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>How it's <em>built</em></h2>
+      <div class="content">
+        <p>A React app (Vite, React Router, Tailwind) on Vercel talks to an Express 5 API on Render, backed by MySQL through Sequelize.</p>
+        <p>Every route checks the token and the role on the server; hiding a button is never the only protection. The user is reloaded on each request, so a deleted account or a changed role takes effect immediately.</p>
+        <div class="tags"><span>React</span><span>Node.js</span><span>Express</span><span>MySQL</span><span>Sequelize</span><span>JWT</span><span>Tailwind CSS</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Decisions</h2>
+      <dl class="content decisions">
+        <div><dt>Visit status is a state machine</dt><dd>Scheduled, checked in, in progress, completed. The front desk checks in, only the doctor starts and completes, and a no-show can only be marked after the visit's time.</dd></div>
+        <div><dt>No double booking</dt><dd>The doctor's and the patient's rows stay locked while the slot is checked and the visit saved. I tested it with two requests sent at the same moment.</dd></div>
+        <div><dt>Medical history is never deleted</dt><dd>A visit is cancelled, not removed, and an account that has visits can't be deleted.</dd></div>
+        <div><dt>Hospital time, not server time</dt><dd>Dates and "today" follow Beirut time, wherever the server runs.</dd></div>
+      </dl>
+    </section>
+
+    <section class="block">
+      <h2>Testing</h2>
+      <div class="content"><p>102 backend tests on Node's test runner, against a real MySQL database: access per role, booking conflicts, status moves, uploads and sign-in hardening. GitHub Actions runs them on every pull request, and a scheduled workflow resets the demo data every night.</p></div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap" style="background: var(--deep)">
+  <section class="inner screens" aria-labelledby="screens-h">
+    <h2 id="screens-h">Screens</h2>
+    <div class="gallery">
+      <figure><img src="img/smartcare-patient-book.webp" alt="Booking a visit" loading="lazy"><figcaption>Booking: doctors by department, with their next free times and fees.</figcaption></figure>
+      <figure><img src="img/smartcare-reception-desk.webp" alt="Front desk board" loading="lazy"><figcaption>Front desk board: every working doctor as a column.</figcaption></figure>
+      <figure><img src="img/smartcare-admin-overview.webp" alt="Administration overview" loading="lazy"><figcaption>Administration: visits per day and per department.</figcaption></figure>
+      <figure><img src="img/smartcare-home.webp" alt="Public website" loading="lazy"><figcaption>The public website.</figcaption></figure>
+      <figure class="phone"><img src="img/smartcare-phone.webp" alt="Patient portal on a phone" loading="lazy"><figcaption>Patient portal on a phone.</figcaption></figure>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <div class="inner">
+    <section class="block">
+      <h2>Where to look in the <em>code</em></h2>
+      <ul class="content files">
+        <li><a href="https://github.com/MayaChaker/SmartCare-HMS/blob/HEAD/backend/utils/bookingConflicts.js"><span>Booking with row locks</span><code>backend/utils/bookingConflicts.js</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/SmartCare-HMS/blob/HEAD/backend/utils/appointmentStatus.js"><span>Visit status rules</span><code>backend/utils/appointmentStatus.js</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/SmartCare-HMS/blob/HEAD/backend/middlewares/auth.js"><span>Token and role checks</span><code>backend/middlewares/auth.js</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/SmartCare-HMS/blob/HEAD/backend/tests/rules.test.js"><span>Business rule tests</span><code>backend/tests/rules.test.js</code><i aria-hidden="true">↗</i></a></li>
+      </ul>
+    </section>
+    <a class="next" href="luxury.html"><span class="label">Next project</span><strong>Luxury Drive Studio <em>→</em></strong></a>
+  </div>
+</div>
+<script src="spot.js"></script>
+</body>
+</html>

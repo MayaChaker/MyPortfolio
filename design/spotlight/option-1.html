@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spotlight · Maya Chaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: dark stage, portrait centre with the name either side; clear title and proof under it; work in a vertical list. */
+:root {
+  --stage: #17110e;
+  --stage-2: #211913;
+  --line: #3a2e26;
+  --sand: #ecdfd0;
+  --soft: #cdbdae;
+  --nude: #d8b49f;
+  --taupe: #ae9886;
+  --glow: 216, 160, 136;
+  --display: "Bodoni Moda", "Didot", Georgia, serif;
+  --body: "Manrope", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--stage); color: var(--sand); }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 1px solid var(--nude); outline-offset: 4px; }
+
+.label { font-size: 12.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--taupe); }
+
+.spot { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(520px circle at var(--x, 50%) var(--y, 35%), rgba(var(--glow), .15), transparent 70%); }
+.wrap { position: relative; z-index: 1; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: 1320px; margin: 0 auto; }
+
+.top { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 22px; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 28px; }
+.top a { text-decoration: none; transition: color .2s; }
+.top nav a { color: var(--taupe); }
+.top nav a:hover { color: var(--sand); }
+.mark { font-family: var(--display); font-size: 20px; letter-spacing: .18em; }
+
+.hero { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 40px; padding-block: 32px 0; }
+.name { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(56px, 9vw, 148px); line-height: .9; letter-spacing: -.02em; }
+.name.right { text-align: right; }
+.portrait { position: relative; width: clamp(240px, 25vw, 360px); }
+.portrait::before { content: ""; position: absolute; inset: -16% -28%; background: radial-gradient(closest-side, rgba(var(--glow), .42), transparent); filter: blur(10px); }
+.portrait img { position: relative; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 25%; border-radius: 999px 999px 4px 4px; }
+
+.intro { display: grid; justify-items: center; gap: 18px; padding-block: 40px 40px; text-align: center; }
+.intro .title { max-width: none; margin: 0; font-family: var(--display); font-style: italic; font-size: clamp(40px, 5vw, 72px); line-height: 1.05; color: var(--nude); }
+.intro p { margin: 0; max-width: 560px; color: var(--soft); font-size: 17px; }
+.cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 26px; border: 1px solid var(--nude); border-radius: 999px; font-family: var(--body); font-size: 12.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--sand); background: transparent; cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
+.btn.solid { background: var(--nude); color: var(--stage); }
+.btn:hover { background: var(--sand); border-color: var(--sand); color: var(--stage); }
+.status { font-size: 14px; color: var(--taupe); }
+
+.proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.proof div { display: flex; flex-direction: column; padding: 32px 24px 32px 0; }
+.proof div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+.proof dd { order: -1; margin: 0; font-family: var(--display); font-size: clamp(44px, 5vw, 72px); line-height: 1; }
+.proof dt { margin-top: 10px; }
+
+.section { padding-block: 140px 0; }
+.section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 32px; margin-bottom: 56px; }
+.section-head h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 6vw, 84px); line-height: 1; }
+.section-head h2 em { color: var(--nude); }
+.section-head p { margin: 0; max-width: 380px; color: var(--taupe); }
+
+.projects { display: grid; gap: 96px; }
+.project { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.project:nth-child(even) .shot { order: 2; }
+.shot { display: block; position: relative; background: var(--stage-2); border: 1px solid var(--line); padding: 32px 32px 0; overflow: hidden; }
+.shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.shot:hover img { transform: translateY(-6px); }
+.project .kind { margin: 0 0 10px; }
+.project h3 { margin: 0 0 18px; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 4vw, 56px); line-height: 1; }
+.project p { margin: 0 0 20px; color: var(--soft); }
+.project ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 8px; color: var(--soft); font-size: 15px; }
+.project li { position: relative; padding-left: 20px; }
+.project li::before { content: ""; position: absolute; left: 0; top: .8em; width: 8px; height: 1px; background: var(--nude); }
+.project .stack { margin: 0 0 28px; font-size: 14px; color: var(--taupe); }
+.project .links { display: flex; flex-wrap: wrap; gap: 12px; }
+.project .links .btn { min-height: 44px; padding: 0 20px; }
+
+.timeline { position: relative; display: grid; gap: 56px; padding-left: 48px; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(var(--nude), rgba(var(--glow), .08)); box-shadow: 0 0 14px rgba(var(--glow), .6); }
+.entry { position: relative; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; }
+.entry::before { content: ""; position: absolute; left: -48px; top: .55em; width: 13px; height: 13px; border-radius: 50%; background: var(--stage); border: 1px solid var(--nude); box-shadow: 0 0 12px rgba(var(--glow), .8); }
+.entry .when { margin: 0; font-family: var(--display); font-size: 40px; line-height: 1; }
+.entry .when span { display: block; margin-top: 10px; }
+.entry h3 { margin: 0 0 8px; font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1.15; }
+.entry .org { margin: 0 0 10px; color: var(--nude); font-weight: 500; }
+.entry p { margin: 0; max-width: 640px; color: var(--soft); }
+
+.tools { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+.tools h3 { margin: 0 0 16px; padding-bottom: 14px; border-bottom: 1px solid var(--nude); }
+.tools ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 18px; }
+
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 64px; align-items: start; padding-block: 140px 0; }
+.contact h2 { margin: 0 0 16px; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 5vw, 64px); line-height: 1; }
+.contact h2 em { color: var(--nude); }
+.contact .lead { margin: 0; max-width: 380px; color: var(--soft); }
+.channels { margin: 0; border-top: 1px solid var(--line); }
+.channel { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; align-items: center; gap: 16px; min-height: 72px; border-bottom: 1px solid var(--line); }
+.channel dt { margin: 0; }
+.channel dd { margin: 0; font-size: 17px; overflow-wrap: anywhere; }
+.channel a.value { text-decoration: none; transition: color .2s; }
+.channel a.value:hover { color: var(--nude); }
+.channel .act { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--sand); font: inherit; font-size: 13px; text-decoration: none; cursor: pointer; transition: border-color .2s, color .2s; }
+.channel .act:hover { border-color: var(--nude); color: var(--nude); }
+.foot { margin-top: 120px; padding-block: 24px 40px; border-top: 1px solid var(--line); color: var(--taupe); font-size: 14px; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; text-align: center; gap: 16px; padding-top: 16px; }
+  .name.right { text-align: center; }
+  .portrait { margin: 0 auto 8px; order: -1; }
+  .proof { grid-template-columns: 1fr; }
+  .proof div, .proof div + div { padding: 24px 0; border-left: 0; }
+  .proof div + div { border-top: 1px solid var(--line); }
+  .project { grid-template-columns: 1fr; gap: 28px; }
+  .project:nth-child(even) .shot { order: 0; }
+  .shot { padding: 16px 16px 0; }
+  .timeline { padding-left: 36px; }
+  .entry { grid-template-columns: 1fr; gap: 12px; }
+  .entry::before { left: -36px; }
+  .tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact { grid-template-columns: 1fr; gap: 32px; padding-top: 96px; }
+  .channel { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding-block: 14px; }
+  .channel dt { grid-column: 1 / -1; }
+  .section { padding-top: 96px; }
+  .top nav { gap: 4px 18px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before { transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="spot" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="inner">
+    <header class="top">
+      <a class="mark" href="#top" aria-label="Maya Chaker, top of page">MC</a>
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="https://maya-chaker-portfolio.vercel.app/MayaChaker_CV%20PDF.pdf">Résumé</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top" aria-labelledby="hero-name">
+      <h1 class="name" id="hero-name">Maya</h1>
+      <div class="portrait"><img src="img/maya.webp" alt="Portrait of Maya Chaker"></div>
+      <p class="name right" aria-hidden="true">Chaker</p>
+    </section>
+
+    <div class="intro">
+      <p class="title">Full-stack developer</p>
+      <p>React, Next.js, Node.js and SQL. Three live projects, each with its source code and a case study.</p>
+    </div>
+
+    <section class="section" id="work" aria-labelledby="work-h">
+      <div class="section-head"><h2 id="work-h">Selected work</h2></div>
+      <div class="projects">
+        <article class="project">
+          <a class="shot" href="veloura.html" tabindex="-1" aria-hidden="true"><img src="img/veloura.webp" alt=""></a>
+          <div>
+            <p class="label kind">Beauty e-commerce</p>
+            <h3>Veloura</h3>
+            <p>Shoppers pick a product and a shade, pay cash on delivery and follow their order. The owner runs orders, prices and stock from an admin area.</p>
+            <ul>
+              <li>Orders priced on the server, stock taken in the same transaction</li>
+              <li>166 tests: unit, integration and end-to-end, run in CI</li>
+            </ul>
+            <p class="stack">Next.js · TypeScript · PostgreSQL · Prisma</p>
+            <div class="links"><a class="btn solid" href="veloura.html">Case study</a><a class="btn" href="https://veloura-beauty-store.vercel.app/">Live site ↗</a><a class="btn" href="https://github.com/MayaChaker/veloura-beauty">Code ↗</a></div>
+          </div>
+        </article>
+        <article class="project">
+          <a class="shot" href="smartcare.html" tabindex="-1" aria-hidden="true"><img src="img/smartcare.webp" alt=""></a>
+          <div>
+            <p class="label kind">Hospital management</p>
+            <h3>SmartCare</h3>
+            <p>A public website and four portals: patients, doctors, front desk and administration. Each role sees only its own tools, and the server enforces the same rules.</p>
+            <ul>
+              <li>Booking saved with row locks, so no slot is taken twice</li>
+              <li>102 backend tests against a real MySQL database</li>
+            </ul>
+            <p class="stack">React · Express · MySQL · Sequelize</p>
+            <div class="links"><a class="btn solid" href="smartcare.html">Case study</a><a class="btn" href="https://smart-care-hms.vercel.app/">Live site ↗</a><a class="btn" href="https://github.com/MayaChaker/SmartCare-HMS">Code ↗</a></div>
+          </div>
+        </article>
+        <article class="project">
+          <a class="shot" href="luxury.html" tabindex="-1" aria-hidden="true"><img src="img/luxury.webp" alt=""></a>
+          <div>
+            <p class="label kind">Car showcase</p>
+            <h3>Luxury Drive Studio</h3>
+            <p>A car catalogue with a page for every model, an interactive 3D viewer, a monthly cost calculator and a concierge form.</p>
+            <ul>
+              <li>The chosen car is carried into the contact form</li>
+              <li>3D viewer built on the Sketchfab Viewer API</li>
+            </ul>
+            <p class="stack">React · React Router · Vite · CSS Modules</p>
+            <div class="links"><a class="btn solid" href="luxury.html">Case study</a><a class="btn" href="https://bmw-mayas-projects-d5aa530e.vercel.app/">Live site ↗</a><a class="btn" href="https://github.com/MayaChaker/bmw-luxury-drive-studio">Code ↗</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experience" aria-labelledby="exp-h">
+      <div class="section-head"><h2 id="exp-h">Experience <em>&amp;</em> studies</h2></div>
+      <div class="timeline">
+        <article class="entry">
+          <p class="when">Present<span class="label">Nov 2026 · Remote</span></p>
+          <div>
+            <h3>Junior Full-Stack Developer</h3>
+            <p class="org">VisionOne</p>
+            <p>Building large digital wedding invitations and everything around them, and contributing to the company's other projects.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <p class="when">2026<span class="label">Freelance</span></p>
+          <div>
+            <h3>Billing system for a generator business</h3>
+            <p>Subscribers, meter readings, monthly bills, payments and unpaid balances. React, Node.js, Express and MySQL. A private client system, so the code and data are not public.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <p class="when">2026<span class="label">Degree</span></p>
+          <div>
+            <h3>Computer Science</h3>
+            <p class="org">Arab Open University</p>
+          </div>
+        </article>
+        <article class="entry">
+          <p class="when">2025<span class="label">Trainee</span></p>
+          <div>
+            <h3>IT Department</h3>
+            <p class="org">NINI Hospital</p>
+            <p>Supported troubleshooting of system and user issues, worked with the IT staff, and saw how a hospital's information systems run day to day.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tools-h">
+      <div class="section-head"><h2 id="tools-h">Tools I <em>work with</em></h2></div>
+      <div class="tools">
+        <div><h3 class="label">Frontend</h3><ul><li>React</li><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li></ul></div>
+        <div><h3 class="label">Backend</h3><ul><li>Node.js</li><li>Express</li><li>Better Auth, JWT</li><li>Zod</li></ul></div>
+        <div><h3 class="label">Data</h3><ul><li>PostgreSQL</li><li>MySQL</li><li>Prisma</li><li>Sequelize</li></ul></div>
+        <div><h3 class="label">Quality</h3><ul><li>Jest</li><li>Playwright</li><li>GitHub Actions</li><li>Git</li></ul></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-h">
+      <div>
+        <h2 id="contact-h">Get in <em>touch</em></h2>
+        <p class="lead">For work, projects or a question about something I built, email is the fastest way to reach me.</p>
+      </div>
+      <dl class="channels">
+        <div class="channel">
+          <dt class="label">Email</dt>
+          <dd><a class="value" id="email" href="mailto:mayachaker06@gmail.com">mayachaker06@gmail.com</a></dd>
+          <dd><button class="act" type="button" id="copy">Copy</button></dd>
+        </div>
+        <div class="channel">
+          <dt class="label">LinkedIn</dt>
+          <dd><a class="value" href="https://www.linkedin.com/in/maya-chaker-9025a7387">maya-chaker</a></dd>
+          <dd><a class="act" href="https://www.linkedin.com/in/maya-chaker-9025a7387" aria-label="Open LinkedIn">↗</a></dd>
+        </div>
+        <div class="channel">
+          <dt class="label">GitHub</dt>
+          <dd><a class="value" href="https://github.com/MayaChaker">MayaChaker</a></dd>
+          <dd><a class="act" href="https://github.com/MayaChaker" aria-label="Open GitHub">↗</a></dd>
+        </div>
+        <div class="channel">
+          <dt class="label">Based in</dt>
+          <dd>Lebanon · Remote</dd>
+          <dd></dd>
+        </div>
+      </dl>
+    </section>
+    <footer class="foot">© 2026 Maya Chaker</footer>
+  </div>
+</div>
+
+<script>
+(function () {
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(pointer: fine)").matches) {
+    var spot = document.querySelector(".spot");
+    window.addEventListener("pointermove", function (e) {
+      spot.style.setProperty("--x", e.clientX + "px");
+      spot.style.setProperty("--y", e.clientY + "px");
+    }, { passive: true });
+  }
+  var copy = document.getElementById("copy");
+  copy.addEventListener("click", function () {
+    navigator.clipboard.writeText("mayachaker06@gmail.com").then(function () {
+      copy.textContent = "Copied";
+      setTimeout(function () { copy.textContent = "Copy"; }, 2000);
+    }, function () {
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById("email"));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    });
+  });
+})();
+</script>
+</body>
+</html>

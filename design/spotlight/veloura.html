@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veloura · Maya Chaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<div class="spot" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="inner">
+    <header class="top">
+      <a class="mark" href="option-1.html" aria-label="Maya Chaker, home">MC</a>
+      <nav aria-label="Primary"><a href="option-1.html#work">Work</a><a href="option-1.html#experience">Experience</a><a href="option-1.html#contact">Contact</a><a href="https://maya-chaker-portfolio.vercel.app/MayaChaker_CV%20PDF.pdf">Résumé</a></nav>
+    </header>
+
+    <section class="head">
+      <div>
+        <a class="back label" href="option-1.html#work">← All projects</a>
+        <p class="label kind">Case study · Beauty e-commerce</p>
+        <h1>Veloura</h1>
+        <p class="summary">Shoppers pick a product and a shade, pay cash on delivery and follow their order. The owner runs orders, prices and stock from an admin area.</p>
+        <div class="btns"><a class="btn solid" href="https://veloura-beauty-store.vercel.app/">Live site ↗</a><a class="btn" href="https://github.com/MayaChaker/veloura-beauty">Source code ↗</a></div>
+      </div>
+      <div class="cover"><img src="img/veloura.webp" alt="Veloura storefront"></div>
+    </section>
+
+    <dl class="stats">
+      <div><dt class="label">Automated tests</dt><dd>166</dd></div>
+      <div><dt class="label">Database models</dt><dd>13</dd></div>
+      <div><dt class="label">Products, 31 brands</dt><dd>59</dd></div>
+      <div><dt class="label">TypeScript</dt><dd>Strict</dd></div>
+    </dl>
+
+    <section class="block">
+      <h2>Overview</h2>
+      <div class="content">
+        <p>Veloura is a multi-brand beauty store. Shoppers browse makeup, skincare, fragrance and haircare, choose a shade, check out with cash on delivery and follow their order. An admin area runs the shop: orders to ship, revenue, prices and stock.</p>
+        <p>It started as a Create React App project. I moved it to Next.js and strict TypeScript in phases, then added PostgreSQL, accounts and the admin side.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Features</h2>
+      <div class="content grid2">
+        <div><h3 class="label">For shoppers</h3><ul class="list"><li>Filters, sorting and pages, kept in the URL</li><li>Shades with their own stock</li><li>Promo code, free-delivery threshold and a delivery pin on a map</li><li>Email or Google sign-in; guests can still check out</li></ul></div>
+        <div><h3 class="label">For the admin</h3><ul class="list"><li>Revenue, orders, low stock and best sellers for 7, 30 or 90 days</li><li>Orders by status, search, Placed to Shipped to Delivered</li><li>Prices, crossed-out "was" prices and stock per shade</li></ul></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>How it's <em>built</em></h2>
+      <div class="content">
+        <p>Store pages are pre-rendered from the database and rebuilt when the admin changes a product, so they stay fast. Admin and account pages render per request, behind a session check.</p>
+        <p>Checkout sends only product ids, shades and quantities. The server validates them with Zod, prices the order from the database and saves it while taking stock, in one transaction.</p>
+        <div class="tags"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Prisma</span><span>Better Auth</span><span>Zod</span><span>Jest</span><span>Playwright</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Decisions</h2>
+      <dl class="content decisions">
+        <div><dt>Money is whole cents</dt><dd>Prices are stored and calculated as integers. A typed price like 19.99 is read digit by digit, never multiplied as a float.</dd></div>
+        <div><dt>No overselling</dt><dd>Every write that depends on the current value is conditional. Two shoppers buying the last item at once: one gets it, the other is told it just sold out.</dd></div>
+        <div><dt>Orders keep a snapshot</dt><dd>Names and prices are copied into the order, so editing a product never rewrites past orders.</dd></div>
+        <div><dt>The admin is invisible</dt><dd>A customer who opens an admin URL gets the store's normal 404. The role is read from the database on every request.</dd></div>
+      </dl>
+    </section>
+
+    <section class="block">
+      <h2>Testing</h2>
+      <div class="content"><p>Jest and React Testing Library cover pricing, order status, validation, access checks, checkout and the admin forms. Integration tests run against a real Postgres, including ten concurrent requests against a rate limit of five. Playwright drives a real browser through the built site. CI runs all of it on every push.</p></div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap" style="background: var(--deep)">
+  <section class="inner screens" aria-labelledby="screens-h">
+    <h2 id="screens-h">Screens</h2>
+    <div class="gallery">
+      <figure><img src="img/veloura-shop.webp" alt="Shop page with filters" loading="lazy"><figcaption>Shop. Filters live in the URL, so a view can be shared.</figcaption></figure>
+      <figure><img src="img/veloura-product.webp" alt="Product page with shades" loading="lazy"><figcaption>Product page. Each shade has its own stock.</figcaption></figure>
+      <figure><img src="img/veloura-checkout.webp" alt="Checkout with a delivery map" loading="lazy"><figcaption>Checkout in three steps, with a pin on the map.</figcaption></figure>
+      <figure><img src="img/veloura-admin.webp" alt="Admin overview" loading="lazy"><figcaption>Admin overview: orders to ship, revenue, low stock.</figcaption></figure>
+      <figure><img src="img/veloura-admin-order.webp" alt="One order in the admin" loading="lazy"><figcaption>One order, with the cash to collect.</figcaption></figure>
+      <figure class="phone"><img src="img/veloura-mobile.webp" alt="Veloura on a phone" loading="lazy"><figcaption>The store on a phone.</figcaption></figure>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <div class="inner">
+    <section class="block">
+      <h2>Where to look in the <em>code</em></h2>
+      <ul class="content files">
+        <li><a href="https://github.com/MayaChaker/veloura-beauty/blob/HEAD/src/server/orders/placeOrder.ts"><span>Placing an order in one transaction</span><code>src/server/orders/placeOrder.ts</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/veloura-beauty/blob/HEAD/src/server/orders/priceOrder.ts"><span>Pricing from the database</span><code>src/server/orders/priceOrder.ts</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/veloura-beauty/blob/HEAD/src/lib/money.ts"><span>Money as whole cents</span><code>src/lib/money.ts</code><i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://github.com/MayaChaker/veloura-beauty/blob/HEAD/src/server/rateLimit.ts"><span>Rate limiting in Postgres</span><code>src/server/rateLimit.ts</code><i aria-hidden="true">↗</i></a></li>
+      </ul>
+    </section>
+    <a class="next" href="smartcare.html"><span class="label">Next project</span><strong>SmartCare <em>→</em></strong></a>
+  </div>
+</div>
+<script src="spot.js"></script>
+</body>
+</html>

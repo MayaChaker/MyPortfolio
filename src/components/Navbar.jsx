@@ -1,60 +1,53 @@
-import { useEffect, useRef, useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { profile } from "@Data/profile";
 
-const links = ["about", "skills", "projects", "work", "contact"];
+const sections = [
+  ["work", "Work"],
+  ["experience", "Experience"],
+  ["contact", "Contact"],
+];
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+function useActiveSection(enabled) {
   const [active, setActive] = useState("");
-  const progressRef = useRef(null);
-  const menuButtonRef = useRef(null);
-  const navRef = useRef(null);
 
   useEffect(() => {
+    if (!enabled) return undefined;
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((entry) => entry.isIntersecting && setActive(entry.target.id)),
-      { rootMargin: "-28% 0px -62%", threshold: 0 },
+      { rootMargin: "-40% 0px -55%" },
     );
-    links.forEach((id) => { const section = document.getElementById(id); if (section) observer.observe(section); });
+    sections.forEach(([id]) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
     return () => observer.disconnect();
-  }, []);
+  }, [enabled]);
 
-  useEffect(() => {
-    let frame;
-    const updateProgress = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(() => {
-        const available = document.documentElement.scrollHeight - window.innerHeight;
-        progressRef.current?.style.setProperty("transform", `scaleX(${available > 0 ? window.scrollY / available : 0})`);
-        frame = undefined;
-      });
-    };
-    updateProgress();
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    return () => { window.removeEventListener("scroll", updateProgress); if (frame) window.cancelAnimationFrame(frame); };
-  }, []);
+  return enabled ? active : "";
+}
 
-  useEffect(() => {
-    if (!open) return undefined;
-    const close = (event) => {
-      if (event.key === "Escape") { setOpen(false); menuButtonRef.current?.focus(); }
-      if (event.type === "pointerdown" && !navRef.current?.contains(event.target)) setOpen(false);
-    };
-    document.addEventListener("keydown", close);
-    document.addEventListener("pointerdown", close);
-    return () => { document.removeEventListener("keydown", close); document.removeEventListener("pointerdown", close); };
-  }, [open]);
+export default function Navbar() {
+  const { pathname, search } = useLocation();
+  const active = useActiveSection(pathname === "/");
 
   return (
-    <header className="site-header" ref={navRef}>
-      <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
-      <nav className="nav shell" aria-label="Primary navigation">
-        <a className="wordmark" href="#top" aria-label="Maya Chaker, home">Maya Chaker<span>Full-stack developer</span></a>
-        <button ref={menuButtonRef} className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="nav-links" aria-label={open ? "Close menu" : "Open menu"}>{open ? <FiX /> : <FiMenu />}</button>
-        <div className={`nav-links ${open ? "is-open" : ""}`} id="nav-links">
-          {links.map((link) => <a key={link} className={active === link ? "active" : ""} href={`#${link}`} aria-current={active === link ? "location" : undefined} onClick={() => setOpen(false)}>{link === "work" ? "Applied work" : link}</a>)}
-          <a className="nav-cta" data-magnetic href="mailto:mayachaker06@gmail.com">Let’s talk</a>
-        </div>
+    <header className="shell top">
+      <Link className="mark" to={{ pathname: "/", search }} onClick={() => window.scrollTo(0, 0)}>
+        MC<span className="visually-hidden">, {profile.name}, home</span>
+      </Link>
+      <nav aria-label="Primary">
+        {sections.map(([id, label]) => (
+          <Link
+            key={id}
+            to={{ pathname: "/", search, hash: id }}
+            className={active === id ? "active" : undefined}
+            aria-current={active === id ? "location" : undefined}
+          >
+            {label}
+          </Link>
+        ))}
+        <a href={profile.cv} target="_blank" rel="noreferrer">Résumé</a>
       </nav>
     </header>
   );

@@ -1,47 +1,36 @@
+import { Link } from "react-router-dom";
 import { projects } from "@Data/projects";
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
-import MotionSection from "@ui/MotionSection";
+import Shot from "@components/Shot";
 
-function SystemVisual({ project, index }) {
-  return (
-    <a className={`system-visual visual-${project.visual}`} href={project.liveLink} target="_blank" rel="noreferrer" aria-label={`Open live ${project.title} project`}>
-      <div className="visual-head"><span>CASE / 0{index + 1}</span><span>{project.status}</span></div>
-      <div className="visual-canvas">
-        <span className="coordinate">PRODUCT SYSTEM · {project.role}</span>
-        <div className="node node-primary"><small>Product</small><strong>{project.visualLabel || project.title}</strong></div>
-        {project.features.map((feature, featureIndex) => <div className={`node node-${featureIndex + 1}`} key={feature}><small>0{featureIndex + 1}</small><span>{feature}</span></div>)}
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M50 50 L18 22 M50 50 L81 20 M50 50 L20 80 M50 50 L83 78" /></svg>
-      </div>
-      <div className="visual-foot"><span>{project.stack.slice(0, 3).join(" / ")}</span><span>View live ↗</span></div>
-    </a>
-  );
-}
+export default function ProjectsSection({ role }) {
+  const ordered = [...projects].sort((a, b) => Number(b.focus.includes(role)) - Number(a.focus.includes(role)));
 
-export default function ProjectsSection() {
   return (
-    <MotionSection className="section projects-section" id="projects" labelledBy="projects-title">
-      <div className="section-heading shell"><p className="section-number">03 / Selected projects</p><h2 id="projects-title">Products, systems, and the thinking behind them.</h2></div>
-      <div className="projects-list">
-        {projects.map((project, index) => (
-          <article className="project-spread shell" key={project.title}>
-            <SystemVisual project={project} index={index} />
-            <div className="project-copy">
-              <p className="project-kicker">Case 0{index + 1} · {project.role}</p>
+    <section className="shell section" id="work" aria-labelledby="work-h">
+      <div className="section-head"><h2 id="work-h">Selected work</h2></div>
+      <div className="projects">
+        {ordered.map((project) => (
+          <article className="project" key={project.slug}>
+            <Link className="shot" to={`/projects/${project.slug}`} tabIndex={-1} aria-hidden="true">
+              <Shot src={project.cover} />
+            </Link>
+            <div>
+              <p className="label kind">{project.kind}</p>
               <h3>{project.title}</h3>
-              <p className="project-summary">{project.summary}</p>
-              <dl className="project-facts">
-                <div><dt>Built</dt><dd>{project.contribution}</dd></div>
-                <div><dt>Result</dt><dd>{project.outcome}</dd></div>
-              </dl>
-              <ul className="tech-list" aria-label={`${project.title} technology stack`}>{project.stack.map((item) => <li key={item}>{item}</li>)}</ul>
-              <div className="project-links">
-                <a className="project-action primary-action" href={project.liveLink} target="_blank" rel="noreferrer">Live demo <FiArrowUpRight /></a>
-                <a className="project-action" href={project.repoLink} target="_blank" rel="noreferrer">GitHub <FiGithub /></a>
+              <p>{project.summary}</p>
+              <ul className="dash-list">
+                {project.points.map((point) => <li key={point}>{point}</li>)}
+              </ul>
+              <p className="stack-line">{project.stack.slice(0, 4).join(" · ")}</p>
+              <div className="btns">
+                <Link className="btn solid" to={`/projects/${project.slug}`}>Case study</Link>
+                <a className="btn" href={project.liveLink} target="_blank" rel="noreferrer">Live site ↗</a>
+                <a className="btn" href={project.repoLink} target="_blank" rel="noreferrer">Code ↗</a>
               </div>
             </div>
           </article>
         ))}
       </div>
-    </MotionSection>
+    </section>
   );
 }
