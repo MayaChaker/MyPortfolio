@@ -122,6 +122,7 @@ a.shot:hover img { transform: translateY(-6px); }
 .entry .org { margin: 0 0 10px; color: var(--nude); font-weight: 500; }
 .entry p { max-width: 640px; margin: 0; color: var(--soft); }
 .entry .org + p { margin-top: 0; }
+.entry .dash-list { max-width: 640px; margin-top: 10px; }
 
 /* Tools */
 .tools { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }

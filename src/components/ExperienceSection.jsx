@@ -12,6 +12,11 @@ export default function ExperienceSection() {
               <h3>{item.title}</h3>
               {item.org && <p className="org">{item.org}</p>}
               {item.description && <p>{item.description}</p>}
+              {item.points && (
+                <ul className="dash-list">
+                  {item.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              )}
             </div>
           </article>
         ))}

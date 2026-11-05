@@ -13,11 +13,11 @@ export const profile = {
 };
 
 // Send a role-specific link to each company: /?role=frontend or /?role=backend
-const work = "Three live projects, each with its source code and a case study.";
+const intro = "Dedicated to my craft, and committed to raising the standard with every project.";
 export const roles = {
-  fullstack: { title: "Full-stack developer", intro: `React, Next.js, Node.js and SQL. ${work}` },
-  frontend: { title: "Frontend developer", intro: `React, Next.js and TypeScript. ${work}` },
-  backend: { title: "Backend developer", intro: `Node.js, Express, PostgreSQL and MySQL. ${work}` },
+  fullstack: { title: "Full-stack developer", intro },
+  frontend: { title: "Frontend developer", intro },
+  backend: { title: "Backend developer", intro },
 };
 
 export function getRole(search) {

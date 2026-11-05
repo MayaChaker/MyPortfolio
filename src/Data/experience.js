@@ -11,7 +11,20 @@ export const experience = [
   },
   {
     when: "2026",
-    label: "Freelance",
+    label: "From Jun 2026 · Internship",
+    title: "Technical & Web Development Intern",
+    org: "TechTalks · Elite Full-Stack Development Bootcamp (in progress)",
+    description: "On Agorys, a team-built business analytics platform (Next.js, Express, Prisma, PostgreSQL):",
+    points: [
+      "Built the login, registration, email verification and logout flows.",
+      "Implemented the dataset management API and the recommendation criteria service.",
+      "Added the backend test suite with Vitest, covering auth, datasets, CSV parsing and the KPI, forecast and recommendation engines.",
+      "Added Playwright end-to-end tests for authentication, dataset upload and analytics.",
+    ],
+  },
+  {
+    when: "2026",
+    label: "From Feb 2026 · Freelance",
     title: "Billing system for a generator business",
     description: "Subscribers, meter readings, monthly bills, payments and unpaid balances. React, Node.js, Express and MySQL. A private client system, so the code and data are not public.",
   },
@@ -23,7 +36,7 @@ export const experience = [
   },
   {
     when: "2025",
-    label: "Trainee",
+    label: "From May 2025 · Trainee",
     title: "IT Department",
     org: "NINI Hospital",
     description: "Supported troubleshooting of system and user issues, worked with the IT staff, and saw how a hospital's information systems run day to day.",

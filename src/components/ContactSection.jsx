@@ -26,7 +26,7 @@ export default function ContactSection() {
     <section className="shell contact" id="contact" aria-labelledby="contact-h">
       <div>
         <h2 id="contact-h">Get in <em>touch</em></h2>
-        <p className="lead">For work, projects or a question about something I built, email is the fastest way to reach me.</p>
+        <p className="lead">Open to new opportunities. Email is the fastest way to reach me.</p>
       </div>
       <dl className="channels">
         <div className="channel">
