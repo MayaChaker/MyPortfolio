@@ -7,7 +7,11 @@ export const experience = [
     label: "Nov 2026 · Remote",
     title: "Junior Full-Stack Developer",
     org: "VisionOne",
-    description: "Building large digital wedding invitations and everything around them, and contributing to the company's other projects.",
+    points: [
+      "Build digital invitations for weddings, birthdays and other events, currently with Next.js, with features tailored to each event.",
+      "Develop the host dashboard for following RSVPs, managing guests and updating event details, as the invitations grow into a complete system.",
+      "Take ownership of parts of other company projects when needed.",
+    ],
   },
   {
     when: "2026",
