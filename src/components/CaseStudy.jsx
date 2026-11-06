@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, Navigate, useLocation, useParams } from "react-router-dom";
 import { getProject, projects } from "@Data/projects";
 import { profile } from "@Data/profile";
+import Phones from "@components/Phones";
 import Shot from "@components/Shot";
 
 function Block({ title, children }) {
@@ -42,8 +43,10 @@ export default function CaseStudy() {
               <a className="btn" href={project.repoLink} target="_blank" rel="noreferrer">Source code ↗</a>
             </div>
           </div>
-          <div className="shot">
-            {project.video ? (
+          <div className={project.phones ? "shot has-phones" : "shot"}>
+            {project.phones ? (
+              <Phones shots={project.phones} eager />
+            ) : project.video ? (
               <video src={project.video} poster={project.cover} controls preload="none" playsInline>
                 <track kind="captions" />
               </video>
@@ -110,6 +113,24 @@ export default function CaseStudy() {
           <Block title="Testing"><p>{project.testing}</p></Block>
         )}
       </div>
+
+      {project.phoneScreens && (
+        <section className="screens" aria-labelledby="screens-h">
+          <div className="shell">
+            <h2 id="screens-h">Screens</h2>
+            <div className="phone-gallery">
+              {project.phoneScreens.map((shot) => (
+                <figure key={shot.src}>
+                  <span className="phone-frame">
+                    <img src={shot.src} alt={shot.caption} loading="lazy" decoding="async" width="480" height="1039" />
+                  </span>
+                  <figcaption>{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {(project.gallery.length > 0 || project.mobile) && (
         <section className="screens" aria-labelledby="screens-h">

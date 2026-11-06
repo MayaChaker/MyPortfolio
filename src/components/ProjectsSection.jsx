@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { projects } from "@Data/projects";
+import Phones from "@components/Phones";
 import Shot from "@components/Shot";
 
 export default function ProjectsSection({ role }) {
@@ -11,8 +12,8 @@ export default function ProjectsSection({ role }) {
       <div className="projects">
         {ordered.map((project) => (
           <article className="project" key={project.slug}>
-            <Link className="shot" to={`/projects/${project.slug}`} tabIndex={-1} aria-hidden="true">
-              <Shot src={project.cover} />
+            <Link className={project.phones ? "shot has-phones" : "shot"} to={`/projects/${project.slug}`} tabIndex={-1} aria-hidden="true">
+              {project.phones ? <Phones shots={project.phones} /> : <Shot src={project.cover} />}
             </Link>
             <div>
               <p className="label kind">{project.kind}</p>

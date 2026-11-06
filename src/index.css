@@ -111,6 +111,18 @@ a.shot:hover img { transform: translateY(-6px); }
 .project .dash-list { margin-bottom: 24px; font-size: 15px; }
 .project .stack-line { margin-bottom: 28px; font-size: 14px; color: var(--taupe); }
 
+/* Phone frames */
+.shot.has-phones, .cs-head .shot.has-phones { padding: 32px; }
+.phones { display: flex; justify-content: center; align-items: center; gap: 16px; }
+.phones .phone-frame { flex: 1 1 0; min-width: 0; max-width: 200px; }
+.phones .phone-frame:nth-child(2) { flex-grow: 1.18; max-width: 236px; }
+.phone-frame { display: block; overflow: hidden; border: 5px solid #0b0807; border-radius: 26px; background: #0b0807; box-shadow: 0 0 0 1px var(--line), 0 24px 48px -28px #000; }
+.shot .phone-frame img, .phone-frame img { width: 100%; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; border-radius: 20px; }
+a.shot:hover .phone-frame img { transform: none; }
+.phone-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 32px; }
+.phone-gallery figure { margin: 0; }
+.phone-gallery figcaption { margin-top: 14px; color: var(--taupe); font-size: 15px; }
+
 /* Experience */
 .timeline { position: relative; display: grid; gap: 56px; padding-left: 48px; }
 .timeline::before { content: ""; position: absolute; top: 10px; bottom: 10px; left: 6px; width: 1px; background: linear-gradient(var(--nude), rgba(var(--glow), .08)); box-shadow: 0 0 14px rgba(var(--glow), .6); }
@@ -217,6 +229,11 @@ a.shot:hover img { transform: translateY(-6px); }
   .project, .cs-head { grid-template-columns: 1fr; gap: 28px; }
   .project:nth-child(even) .shot { order: 0; }
   .shot, .cs-head .shot { padding: 16px 16px 0; }
+  .shot.has-phones, .cs-head .shot.has-phones { padding: 16px; }
+  .phones { gap: 8px; }
+  .phone-frame { border-width: 3px; border-radius: 18px; }
+  .shot .phone-frame img, .phone-frame img { border-radius: 14px; }
+  .phone-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 16px; }
   .timeline { padding-left: 36px; }
   .entry { grid-template-columns: 1fr; gap: 12px; }
   .entry::before { left: -36px; }
