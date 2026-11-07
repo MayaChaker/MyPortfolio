@@ -15,7 +15,7 @@ export const experience = [
   },
   {
     when: "2026",
-    label: "From Jun 2026 · Internship",
+    label: "Jun - Jul 2026 · Internship",
     title: "Technical & Web Development Intern",
     org: "TechTalks · Elite Full-Stack Development Bootcamp (in progress)",
     description: "On Agorys, a team-built business analytics platform (Next.js, Express, Prisma, PostgreSQL):",
@@ -28,7 +28,7 @@ export const experience = [
   },
   {
     when: "2026",
-    label: "From Feb 2026 · Freelance",
+    label: "Freelance",
     title: "Billing system for a generator business",
     description: "Subscribers, meter readings, monthly bills, payments and unpaid balances. React, Node.js, Express and MySQL. A private client system, so the code and data are not public.",
   },
@@ -40,7 +40,7 @@ export const experience = [
   },
   {
     when: "2025",
-    label: "From May 2025 · Trainee",
+    label: "Trainee",
     title: "IT Department",
     org: "NINI Hospital",
     description: "Supported troubleshooting of system and user issues, worked with the IT staff, and saw how a hospital's information systems run day to day.",
