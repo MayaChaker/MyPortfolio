@@ -9,11 +9,11 @@ export const profile = {
   linkedinHandle: "maya-chaker",
   cv: "/Maya-Chaker-CV.pdf",
   photo: "/maya.webp",
-  availability: "Open to new opportunities. Based in Lebanon, available for remote, hybrid and on-site roles.",
+  availability:"Open to new opportunities. Based in Lebanon, available for remote, hybrid and on-site roles.",
 };
 
 // Send a role-specific link to each company: /?role=frontend or /?role=backend
-const intro = "Dedicated to my craft, and committed to raising the standard with every project.";
+const intro = "I build complete web apps, and I can explain every decision behind them.";
 export const roles = {
   fullstack: { title: "Full-stack developer", intro },
   frontend: { title: "Frontend developer", intro },
