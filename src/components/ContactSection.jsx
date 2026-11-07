@@ -25,31 +25,26 @@ export default function ContactSection() {
   return (
     <section className="shell contact" id="contact" aria-labelledby="contact-h">
       <div>
-        <h2 id="contact-h">Get in <em>touch</em></h2>
-        <p className="lead">Open to new opportunities. Email is the fastest way to reach me.</p>
+        <h2 id="contact-h">Contact</h2>
+        <p className="lead">{profile.availability} Email is the fastest way to reach me.</p>
       </div>
-      <dl className="channels">
-        <div className="channel">
-          <dt className="label">Email</dt>
-          <dd><a className="value" id="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a></dd>
-          <dd>
-            <button className="act" type="button" onClick={copyEmail}>{copied ? "Copied" : "Copy"}</button>
-            <span className="visually-hidden" aria-live="polite">{copied ? "Email address copied" : ""}</span>
-          </dd>
-        </div>
+      <ul className="channels">
+        <li className="channel">
+          <span className="label">Email</span>
+          <a className="value" id="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a>
+          <button className="act" type="button" onClick={copyEmail}>{copied ? "Copied" : "Copy"}</button>
+          <span className="visually-hidden" aria-live="polite">{copied ? "Email address copied" : ""}</span>
+        </li>
         {profiles.map(([label, handle, href]) => (
-          <div className="channel" key={label}>
-            <dt className="label">{label}</dt>
-            <dd><a className="value" href={href} target="_blank" rel="noreferrer">{handle}</a></dd>
-            <dd><a className="act" href={href} target="_blank" rel="noreferrer" aria-label={`Open ${label}`}>↗</a></dd>
-          </div>
+          <li key={label}>
+            <a className="channel channel-link" href={href} target="_blank" rel="noreferrer">
+              <span className="label">{label}</span>
+              <span className="value">{handle}</span>
+              <span className="act" aria-hidden="true">↗</span>
+            </a>
+          </li>
         ))}
-        <div className="channel">
-          <dt className="label">Based in</dt>
-          <dd>{profile.location}</dd>
-          <dd />
-        </div>
-      </dl>
+      </ul>
     </section>
   );
 }

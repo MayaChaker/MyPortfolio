@@ -73,7 +73,9 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
 .dash-list li::before { content: ""; position: absolute; top: .85em; left: 0; width: 8px; height: 1px; background: var(--nude); }
 
 /* Header */
-.top { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 22px; }
+/* Sticky, so Résumé stays reachable down the page; the shadow and clip paint the bar edge to edge. */
+.top { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 18px; background: rgba(23, 17, 14, .9); box-shadow: 0 0 0 100vmax rgba(23, 17, 14, .9); clip-path: inset(0 -100vmax); backdrop-filter: blur(10px); }
+main [id] { scroll-margin-top: 80px; }
 .top a { text-decoration: none; }
 .mark { font-family: var(--display); font-size: 20px; letter-spacing: .18em; }
 .top nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 28px; }
@@ -149,14 +151,15 @@ a.shot:hover .phone-frame img { transform: none; }
 
 /* Contact */
 .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 64px; align-items: start; padding-top: 140px; }
-.contact h2 { margin-bottom: 16px; font-size: clamp(40px, 5vw, 64px); }
-.contact .lead { max-width: 380px; margin: 0; color: var(--soft); }
-.channels { margin: 0; border-top: 1px solid var(--line); }
-.channel { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; align-items: center; gap: 16px; min-height: 72px; border-bottom: 1px solid var(--line); }
-.channel dt, .channel dd { margin: 0; }
-.channel dd { font-size: 17px; overflow-wrap: anywhere; }
-.channel a.value { text-decoration: none; transition: color .2s; }
-.channel a.value:hover { color: var(--nude); }
+.contact h2 { margin-bottom: 20px; }
+.contact .lead { max-width: 420px; margin: 0; color: var(--soft); font-size: 17px; }
+.channels { border-top: 1px solid var(--line); }
+.channels > li { border-bottom: 1px solid var(--line); }
+.channel { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; align-items: center; gap: 16px; min-height: 76px; }
+.channel .value { font-size: 18px; overflow-wrap: anywhere; text-decoration: none; transition: color .2s; }
+.channel a.value:hover, .channel-link:hover .value { color: var(--nude); }
+.channel-link { text-decoration: none; }
+.channel-link:hover .act { border-color: var(--nude); color: var(--nude); }
 .channel .act { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; font-size: 13px; text-decoration: none; cursor: pointer; transition: border-color .2s, color .2s; }
 .channel .act:hover { border-color: var(--nude); color: var(--nude); }
 
@@ -241,7 +244,7 @@ a.shot:hover .phone-frame img { transform: none; }
   .quotes, .grid2, .gallery { grid-template-columns: 1fr; }
   .contact { grid-template-columns: 1fr; gap: 32px; }
   .channel { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding-block: 14px; }
-  .channel dt { grid-column: 1 / -1; }
+  .channel .label { grid-column: 1 / -1; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stats div:nth-child(odd) { padding-left: 0; border-left: 0; }
   .stats div:nth-child(n + 3) { border-top: 1px solid var(--line); }

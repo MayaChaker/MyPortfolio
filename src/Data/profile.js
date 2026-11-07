@@ -9,7 +9,7 @@ export const profile = {
   linkedinHandle: "maya-chaker",
   cv: "/Maya-Chaker-CV.pdf",
   photo: "/maya.webp",
-  location: "Lebanon · Remote",
+  availability: "Open to new opportunities. Based in Lebanon, available for remote, hybrid and on-site roles.",
 };
 
 // Send a role-specific link to each company: /?role=frontend or /?role=backend
