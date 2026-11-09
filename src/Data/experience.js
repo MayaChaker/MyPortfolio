@@ -28,7 +28,7 @@ export const experience = [
   },
   {
     when: "2026",
-    label: "Freelance",
+    label: "Feb - May 2026 · Freelance",
     title: "Billing system for a generator business",
     description: "Subscribers, meter readings, monthly bills, payments and unpaid balances. React, Node.js, Express and MySQL. A private client system, so the code and data are not public.",
   },
@@ -40,7 +40,7 @@ export const experience = [
   },
   {
     when: "2025",
-    label: "Trainee",
+    label: "May - Jun 2025 · Trainee",
     title: "IT Department",
     org: "NINI Hospital",
     description: "Supported troubleshooting of system and user issues, worked with the IT staff, and saw how a hospital's information systems run day to day.",
